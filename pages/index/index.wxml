@@ -1,0 +1,77 @@
+<view class="theme-{{themeKey}} page">
+  <!-- 顶栏：品牌 + 右上角 主题/音乐 -->
+  <view class="topbar">
+    <view class="brand">⭐ 明星私厨</view>
+    <view class="top-actions">
+      <text class="icon-btn" bindtap="openTheme">🎨 主题</text>
+      <text class="icon-btn" bindtap="openMusic">🎵 音乐</text>
+    </view>
+  </view>
+
+  <!-- 双窗口切换 -->
+  <view class="seg">
+    <text class="seg-item {{mode==='order'?'active':''}}" data-m="order" bindtap="switchMode">点餐窗口</text>
+    <text class="seg-item {{mode==='make'?'active':''}}" data-m="make" bindtap="switchMode">制作窗口</text>
+  </view>
+
+  <!-- 点餐窗口 -->
+  <block wx:if="{{mode==='order'}}">
+    <scroll-view class="cat-bar" scroll-x>
+      <text wx:for="{{categories}}" wx:key="*this" class="cat {{activeCat===item?'active':''}}" data-c="{{item}}" bindtap="switchCat">{{item}}</text>
+    </scroll-view>
+    <scroll-view class="dish-list" scroll-y>
+      <dish-card wx:for="{{list}}" wx:key="id" dish="{{item}}" bind:add="onAdd" />
+      <view class="bottom-pad"></view>
+    </scroll-view>
+  </block>
+
+  <!-- 制作窗口 -->
+  <block wx:elif="{{mode==='make'}}">
+    <view class="make card">
+      <view class="make-search">
+        <input class="make-input" placeholder="输入想吃的菜，如：红烧肉" value="{{makeKeyword}}" bindinput="onMakeInput" confirm-type="search" bindconfirm="onMakeSearch" />
+        <button class="btn-primary make-btn" bindtap="onMakeSearch">查做法</button>
+      </view>
+
+      <block wx:if="{{makeResult}}">
+        <view class="make-head">
+          <image wx:if="{{makeResult.cover && !makeImgError}}" class="make-emoji" src="{{makeResult.cover}}" mode="aspectFill" binderror="onMakeImgError" />
+          <text wx:else class="make-emoji">{{makeResult.emoji}}</text>
+          <view>
+            <text class="make-name">{{makeResult.name}}</text>
+            <text class="muted">🔥 {{makeResult.calories}} kcal/份</text>
+          </view>
+        </view>
+
+        <view class="section-title">所需食材</view>
+        <view class="ing-list">
+          <view wx:for="{{makeResult.ingredients}}" wx:key="name" class="ing">
+            <text>{{item.name}}</text>
+            <text class="muted">{{item.amount}}</text>
+          </view>
+        </view>
+
+        <view class="section-title">做法步骤</view>
+        <view wx:for="{{makeResult.steps}}" wx:key="*this" class="step">
+          <text class="step-no">{{index+1}}</text>
+          <text>{{item}}</text>
+        </view>
+
+        <view class="section-title">口味选择</view>
+        <view>
+          <text wx:for="{{makeResult.spicy}}" wx:key="*this" class="chip">{{item}}</text>
+          <text wx:for="{{makeResult.flavor}}" wx:key="*this" class="chip">{{item}}</text>
+        </view>
+      </block>
+
+      <view wx:else class="make-empty muted">输入菜名，查看食材用量与做法步骤~</view>
+    </view>
+  </block>
+
+  <!-- 底部购物车条（含本单热量） -->
+  <order-bar count="{{cartCount}}" calories="{{cartCalories}}" />
+
+  <!-- 弹层 -->
+  <theme-panel show="{{showTheme}}" bind:close="closeTheme" />
+  <music-panel show="{{showMusic}}" bind:close="closeMusic" />
+</view>

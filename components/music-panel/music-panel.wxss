@@ -1,0 +1,9 @@
+.mask { position: fixed; left: 0; top: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); display: flex; align-items: flex-end; z-index: 50; }
+.panel { width: 100%; border-radius: 32rpx 32rpx 0 0; padding: 32rpx; }
+.panel-title { font-size: 32rpx; font-weight: 700; margin-bottom: 20rpx; }
+.music-item { display: flex; align-items: center; justify-content: space-between; padding: 20rpx; border-radius: 20rpx; margin-bottom: 12rpx; background: var(--soft); }
+.music-item.active { outline: 4rpx solid var(--accent); }
+.vol-row { display: flex; align-items: center; margin: 20rpx 0; }
+.vol { flex: 1; margin-left: 20rpx; }
+.tip { display: block; padding: 20rpx 0; line-height: 1.6; }
+.close-btn { margin-top: 20rpx; }

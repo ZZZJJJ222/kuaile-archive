@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "dish-card": "/components/dish-card/dish-card",
+    "order-bar": "/components/order-bar/order-bar",
+    "theme-panel": "/components/theme-panel/theme-panel",
+    "music-panel": "/components/music-panel/music-panel"
+  }
+}

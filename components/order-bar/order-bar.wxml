@@ -1,0 +1,7 @@
+<view class="order-bar">
+  <view class="ob-info">
+    <text class="ob-kcal">🔥 {{calories}} kcal</text>
+    <text class="ob-count muted">共 {{count}} 份</text>
+  </view>
+  <button class="btn-primary ob-btn" bindtap="goOrder">查看订单</button>
+</view>

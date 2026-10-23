@@ -1,0 +1,52 @@
+<view class="theme-{{themeKey}} page">
+  <view class="topbar">
+    <view class="brand">📋 我的订单</view>
+  </view>
+
+  <block wx:if="{{cart.length}}">
+    <!-- 总热量 -->
+    <view class="summary card">
+      <text class="sum-kcal">🔥 本单总热量 {{totalCalories}} kcal</text>
+      <text class="muted">共 {{totalCount}} 份</text>
+    </view>
+
+    <!-- 运动消耗建议 -->
+    <view class="section-title pad">消耗这些热量，你可以：</view>
+    <view class="ex-list">
+      <view wx:for="{{exercises}}" wx:key="key" class="ex card">
+        <text class="ex-emoji">{{item.emoji}}</text>
+        <view class="ex-body">
+          <text class="ex-name">{{item.name}}</text>
+          <text class="ex-min">约 {{item.minutes}} 分钟</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 已点明细 -->
+    <view class="section-title pad">已点菜品</view>
+    <view class="order-list">
+      <view wx:for="{{cart}}" wx:key="_key" class="order-item card">
+        <image wx:if="{{item.cover && !item.imgError}}" class="oi-emoji" src="{{item.cover}}" mode="aspectFill" binderror="onOrderImgError" data-k="{{item._key}}" />
+        <text wx:else class="oi-emoji">{{item.emoji}}</text>
+        <view class="oi-body">
+          <text class="oi-name">{{item.name}}</text>
+          <text class="muted">{{item.spicy}} · {{item.flavor}}<text wx:if="{{item.note}}"> · 备注:{{item.note}}</text></text>
+          <text class="muted">🔥 {{item.calories}} kcal × {{item.qty}} = {{item.calories*item.qty}} kcal</text>
+        </view>
+        <view class="stepper">
+          <text class="step-btn" bindtap="stepQty" data-k="{{item._key}}" data-d="-1">−</text>
+          <text class="qty">{{item.qty}}</text>
+          <text class="step-btn" bindtap="stepQty" data-k="{{item._key}}" data-d="1">＋</text>
+        </view>
+      </view>
+    </view>
+
+    <button class="btn-primary clear-btn" bindtap="clearAll">清空订单</button>
+    <view class="bottom-pad"></view>
+  </block>
+
+  <view wx:else class="empty">
+    <text class="empty-emoji">🍽️</text>
+    <text class="muted">还没有点餐，去首页点几道菜吧~</text>
+  </view>
+</view>

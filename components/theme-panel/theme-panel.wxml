@@ -1,0 +1,15 @@
+<view wx:if="{{show}}" class="mask" bindtap="close">
+  <view class="panel card" catchtap="noop">
+    <view class="panel-title">选择主题</view>
+    <view class="theme-list">
+      <view wx:for="{{themes}}" wx:key="key" class="theme-item {{current===item.key?'active':''}}" bindtap="pick" data-key="{{item.key}}">
+        <text class="theme-decor">{{item.decor}}</text>
+        <view>
+          <text class="theme-name">{{item.name}}</text>
+          <text class="theme-desc muted">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+    <button class="btn-primary close-btn" bindtap="close">完成</button>
+  </view>
+</view>

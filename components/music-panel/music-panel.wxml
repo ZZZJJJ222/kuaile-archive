@@ -1,0 +1,21 @@
+<view wx:if="{{show}}" class="mask" bindtap="close">
+  <view class="panel card" catchtap="noop">
+    <view class="panel-title">背景音乐</view>
+
+    <block wx:if="{{list.length}}">
+      <view wx:for="{{list}}" wx:key="src" class="music-item {{currentIndex===index?'active':''}}" bindtap="pick" data-i="{{index}}">
+        <text>{{item.name}}</text>
+        <text wx:if="{{currentIndex===index && playing}}">▶ 播放中</text>
+      </view>
+      <view class="vol-row">
+        <text>音量</text>
+        <slider class="vol" min="0" max="100" value="{{volume*100}}" bindchanging="onVolume" bindchange="onVolume" />
+      </view>
+      <button class="btn-primary" bindtap="togglePlay">{{playing?'暂停':'播放'}}</button>
+    </block>
+
+    <view wx:else class="tip muted">曲目稍后提供：把 mp3 放入 assets/audio，并在 app.js 的 globalData.musicList 中配置 { name, src } 即可。</view>
+
+    <button class="btn-primary close-btn" bindtap="close">完成</button>
+  </view>
+</view>

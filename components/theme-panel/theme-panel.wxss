@@ -1,0 +1,10 @@
+.mask { position: fixed; left: 0; top: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); display: flex; align-items: flex-end; z-index: 50; }
+.panel { width: 100%; border-radius: 32rpx 32rpx 0 0; padding: 32rpx; }
+.panel-title { font-size: 32rpx; font-weight: 700; margin-bottom: 20rpx; }
+.theme-list { display: flex; flex-direction: column; }
+.theme-item { display: flex; align-items: center; padding: 20rpx; border-radius: 20rpx; margin-bottom: 12rpx; background: var(--soft); }
+.theme-item.active { outline: 4rpx solid var(--accent); }
+.theme-decor { font-size: 48rpx; margin-right: 20rpx; }
+.theme-name { font-weight: 700; font-size: 30rpx; display: block; }
+.theme-desc { font-size: 24rpx; }
+.close-btn { margin-top: 20rpx; }

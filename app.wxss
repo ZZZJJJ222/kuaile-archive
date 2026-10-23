@@ -1,0 +1,55 @@
+/* ===== 主题皮肤（原创可爱风，CSS 变量驱动，可换肤） ===== */
+.theme-cream     { --primary:#FFD66B; --bg:#FFF8E7; --card:#FFFFFF; --accent:#FF9AA2; --text:#5b4a2f; --soft:#FFF3D6; }
+.theme-strawberry{ --primary:#FFB3C6; --bg:#FFF0F5; --card:#FFFFFF; --accent:#FF6B9D; --text:#7a3b52; --soft:#FFE3EC; }
+.theme-mint      { --primary:#9BE3C4; --bg:#F0FBF6; --card:#FFFFFF; --accent:#4FC99B; --text:#2f5b4a; --soft:#DFF7EC; }
+.theme-starry    { --primary:#A9C7FF; --bg:#F0F4FF; --card:#FFFFFF; --accent:#6B8CFF; --text:#2f3b5b; --soft:#E2E9FF; }
+
+page {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+  box-sizing: border-box;
+}
+
+view, text, scroll-view, input, textarea, button { box-sizing: border-box; }
+
+/* ===== 通用卡片 ===== */
+.card {
+  background: var(--card);
+  border-radius: 24rpx;
+  padding: 24rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.06);
+}
+
+/* ===== 主按钮 ===== */
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border-radius: 999rpx;
+  font-weight: 600;
+  border: none;
+}
+.btn-primary::after { border: none; }
+
+/* ===== 标签 / 选择块 ===== */
+.chip {
+  display: inline-block;
+  padding: 10rpx 24rpx;
+  margin: 8rpx 12rpx 8rpx 0;
+  border-radius: 999rpx;
+  background: var(--soft);
+  color: var(--text);
+  font-size: 24rpx;
+}
+.chip.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  margin: 8rpx 0 16rpx;
+}
+
+.muted { color: #9a9a9a; font-size: 24rpx; }

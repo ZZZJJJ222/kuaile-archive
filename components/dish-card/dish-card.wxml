@@ -1,0 +1,39 @@
+<view class="dish card">
+  <view class="dish-head">
+    <image wx:if="{{dish.cover && !imgError}}" class="emoji" src="{{dish.cover}}" mode="aspectFill" binderror="onImgError" />
+    <text wx:else class="emoji">{{dish.emoji}}</text>
+    <view class="dish-meta">
+      <text class="name">{{dish.name}}</text>
+      <text class="desc muted">{{dish.desc}}</text>
+      <text class="kcal">🔥 {{dish.calories}} kcal/份</text>
+    </view>
+  </view>
+
+  <block wx:if="{{dish.spicy.length}}">
+    <view class="opt-label">辣度</view>
+    <view>
+      <text wx:for="{{dish.spicy}}" wx:key="*this" class="chip {{spicy===item?'active':''}}" data-v="{{item}}" bindtap="selectSpicy">{{item}}</text>
+    </view>
+  </block>
+
+  <block wx:if="{{dish.flavor.length}}">
+    <view class="opt-label">口味</view>
+    <view>
+      <text wx:for="{{dish.flavor}}" wx:key="*this" class="chip {{flavor===item?'active':''}}" data-v="{{item}}" bindtap="selectFlavor">{{item}}</text>
+    </view>
+  </block>
+
+  <block wx:if="{{dish.noteAllowed}}">
+    <view class="opt-label">备注</view>
+    <input class="note-input" placeholder="如：不要香菜 / 少放盐" value="{{note}}" bindinput="onNoteInput" />
+  </block>
+
+  <view class="dish-foot">
+    <view class="stepper">
+      <text class="step-btn" bindtap="stepQty" data-d="-1">−</text>
+      <text class="qty">{{qty}}</text>
+      <text class="step-btn" bindtap="stepQty" data-d="1">＋</text>
+    </view>
+    <button class="btn-primary add-btn" bindtap="onAdd">加入订单</button>
+  </view>
+</view>
