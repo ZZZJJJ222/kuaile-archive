@@ -17,7 +17,10 @@ node_modules/
 # 开发者工具私有配置（机器相关，不入库）
 project.private.config.json
 
-# 本地音频：音乐已改为网络地址播放，本地 mp3 为冗余资源；
-# 且含版权音乐与重复垃圾文件（assets/audio/audio/），默认不入库。
-# 如需随仓库分发，请改为私有仓库并删除此条。
-assets/audio/
+# 本地音频：仅入库真正使用的 3 首背景音乐 mp3（music01~03.mp3）。
+# 以下排除项：
+#   assets/audio/audio/  —— 改名残留的 .mp3.mp3 双后缀重复文件，约 22MB，垃圾，不入仓库
+#   assets/audio/_keep/  —— 仅用于占位保留目录的空壳文件，无意义，不入仓库
+# 注：背景音乐版权归原作者，本仓库为私有，仅作比赛备份/代码分发用途。
+assets/audio/audio/
+assets/audio/_keep/
