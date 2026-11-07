@@ -12,3 +12,12 @@ $RECYCLE.BIN/
 
 # Node.js
 node_modules/
+
+# --- 微信小程序 ---
+# 开发者工具私有配置（机器相关，不入库）
+project.private.config.json
+
+# 本地音频：音乐已改为网络地址播放，本地 mp3 为冗余资源；
+# 且含版权音乐与重复垃圾文件（assets/audio/audio/），默认不入库。
+# 如需随仓库分发，请改为私有仓库并删除此条。
+assets/audio/

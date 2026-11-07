@@ -1,7 +1,16 @@
 {
-  "description": "明星私厨 - 点餐 + 制作 Demo",
+  "description": "筷乐档案馆 - 点餐 + 制作 Demo",
   "packOptions": {
-    "ignore": [],
+    "ignore": [
+      {
+        "type": "folder",
+        "value": "assets/audio"
+      },
+      {
+        "type": "folder",
+        "value": ".git"
+      }
+    ],
     "include": []
   },
   "setting": {
@@ -32,7 +41,7 @@
   "compileType": "miniprogram",
   "libVersion": "latest",
   "appid": "wxd398513dd9fd6876",
-  "projectname": "明星私厨",
+  "projectname": "筷乐档案馆",
   "condition": {},
   "simulatorPluginLibVersion": {},
   "editorSetting": {}

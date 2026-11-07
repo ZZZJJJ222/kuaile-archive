@@ -1,7 +1,7 @@
 <view class="theme-{{themeKey}} page">
   <!-- 顶栏：品牌 + 右上角 主题/音乐 -->
   <view class="topbar">
-    <view class="brand">⭐ 明星私厨</view>
+    <view class="brand">⭐ 筷乐档案馆</view>
     <view class="top-actions">
       <text class="icon-btn" bindtap="openTheme">🎨 主题</text>
       <text class="icon-btn" bindtap="openMusic">🎵 音乐</text>
